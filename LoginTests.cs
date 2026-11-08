@@ -1,9 +1,11 @@
 using NUnit.Framework;
+using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
+using System.IO;
 
-namespace FirstTests // Đảm bảo đúng tên namespace project Bài 1 của bạn
+namespace FirstTests 
 {
     public class LoginTests
     {
@@ -17,7 +19,7 @@ namespace FirstTests // Đảm bảo đúng tên namespace project Bài 1 của 
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
         }
 
-        // Hàm dùng chung đăng nhập (tái sử dụng cho cả Phần B và Phần C)[cite: 2]
+        // Hàm dùng chung đăng nhập
         private void Login(string username, string password)
         {
             driver.FindElement(By.Id("user-name")).SendKeys(username);
@@ -54,21 +56,55 @@ namespace FirstTests // Đảm bảo đúng tên namespace project Bài 1 của 
 
             foreach (var item in products)
             {
-                // Bắt buộc dùng item.FindElement(...) để lấy thông tin bên trong mỗi sản phẩm[cite: 2]
                 string name = item.FindElement(By.CssSelector(".inventory_item_name")).Text;
                 string price = item.FindElement(By.CssSelector(".inventory_item_price")).Text;
 
-                Console.WriteLine($"Tên SP: {name} - Giá: {price}");
+                Console.WriteLine($"Tên SP: {name} | Giá: {price}");
 
-                // Assert chặt theo yêu cầu đề bài[cite: 2]
                 Assert.That(string.IsNullOrEmpty(name), Is.False, "Lỗi: Tên sản phẩm bị rỗng!");
                 Assert.That(price.StartsWith("$"), Is.True, $"Lỗi: Giá của {name} không bắt đầu bằng $!");
             }
         }
 
+        // --- PHẦN D: TEST CỐ TÌNH FAIL ĐỂ TỰ ĐỘNG CHỤP ẢNH ---
+        [Test]
+        public void Test_IntentionalFail_ToCaptureScreenshot()
+        {
+            Login("standard_user", "secret_sauce");
+            
+            // Cố tình assert sai tiêu đề để test rớt và kích hoạt [TearDown] chụp ảnh
+            Assert.That(driver.Title, Is.EqualTo("Sai Tieu De Co Tinh"), "Cố tình làm sai để sinh ảnh minh chứng Phần D!");
+        }
+
+        // --- PHẦN D: [TearDown] TỰ ĐỘNG CHỤP ẢNH KHI THẤT BẠI ---
         [TearDown]
         public void TearDown()
         {
+            // Kiểm tra nếu ca test bị thất bại (Failed) thì tiến hành chụp ảnh
+            if (TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Failed)
+            {
+                try
+                {
+                    var testName = TestContext.CurrentContext.Test.Name;
+                    var screenshot = ((ITakesScreenshot)driver).GetScreenshot();
+                    
+                    // Tạo thư mục screenshots trong thư mục dự án nếu chưa có
+                    var dir = Path.Combine(TestContext.CurrentContext.WorkDirectory, "screenshots");
+                    Directory.CreateDirectory(dir);
+                    
+                    var filePath = Path.Combine(dir, $"{testName}_{DateTime.Now:yyyyMMdd_HHmmss}.png");
+                    screenshot.SaveAsFile(filePath);
+                    
+                    // Đính kèm ảnh vào NUnit TestContext
+                    TestContext.AddTestAttachment(filePath);
+                }
+                catch (Exception ex)
+                {
+                    TestContext.WriteLine("Lỗi khi chụp ảnh màn hình: " + ex.Message);
+                }
+            }
+
+            // Đóng và giải phóng driver
             if (driver != null)
             {
                 driver.Quit();
