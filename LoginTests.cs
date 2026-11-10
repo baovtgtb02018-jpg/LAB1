@@ -14,9 +14,18 @@ namespace FirstTests
         [SetUp]
         public void Setup()
         {
-            driver = new ChromeDriver();
+            var options = new ChromeOptions();
+            
+            // Cấu hình chạy ẩn (Headless) và tối ưu hóa cho môi trường CI/CD (GitHub Actions)
+            options.AddArgument("--headless");
+            options.AddArgument("--no-sandbox");
+            options.AddArgument("--disable-dev-shm-usage");
+            options.AddArgument("--disable-gpu");
+            options.AddArgument("--window-size=1920,1080");
+
+            driver = new ChromeDriver(options);
             driver.Navigate().GoToUrl("https://www.saucedemo.com/");
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
         }
 
         // Hàm dùng chung đăng nhập
@@ -66,14 +75,13 @@ namespace FirstTests
             }
         }
 
- // --- PHẦN D: TEST CỐ TÌNH FAIL ĐỂ TỰ ĐỘNG CHỤP ẢNH ---
-// --- PHẦN D: SỬA LẠI ĐỂ TEST CHẠY ĐÚNG VÀ RA XANH ---
+        // --- PHẦN D: TEST CHẠY ĐÚNG ĐỂ RA XANH ---
         [Test]
         public void Test_IntentionalFail_ToCaptureScreenshot()
         {
             Login("standard_user", "secret_sauce");
             
-            // Sửa lại thành tiêu đề đúng của trang Swag Labs để test chạy Pass 100%
+            // Khớp chính xác tiêu đề trang Swag Labs để test pass 100%
             Assert.That(driver.Title, Is.EqualTo("Swag Labs"), "Test da chay dung!");
         }
 
@@ -81,7 +89,6 @@ namespace FirstTests
         [TearDown]
         public void TearDown()
         {
-            // Kiểm tra nếu ca test bị thất bại (Failed) thì tiến hành chụp ảnh
             if (TestContext.CurrentContext.Result.Outcome.Status == TestStatus.Failed)
             {
                 try
@@ -89,14 +96,12 @@ namespace FirstTests
                     var testName = TestContext.CurrentContext.Test.Name;
                     var screenshot = ((ITakesScreenshot)driver).GetScreenshot();
                     
-                    // Tạo thư mục screenshots trong thư mục dự án nếu chưa có
                     var dir = Path.Combine(TestContext.CurrentContext.WorkDirectory, "screenshots");
                     Directory.CreateDirectory(dir);
                     
                     var filePath = Path.Combine(dir, $"{testName}_{DateTime.Now:yyyyMMdd_HHmmss}.png");
                     screenshot.SaveAsFile(filePath);
                     
-                    // Đính kèm ảnh vào NUnit TestContext
                     TestContext.AddTestAttachment(filePath);
                 }
                 catch (Exception ex)
@@ -105,7 +110,6 @@ namespace FirstTests
                 }
             }
 
-            // Đóng và giải phóng driver
             if (driver != null)
             {
                 driver.Quit();
