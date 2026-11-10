@@ -172,4 +172,4 @@ namespace SauceDemoTests
         }
     }
 }
-// Cap nhat boi nhanh feature-conflict
+// Cap nhat ghi chu hoan chinh sau khi giai quyet conflict
