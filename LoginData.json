@@ -1,0 +1,44 @@
+[
+  {
+    "TestCaseName": "HappyCase_ValidUser",
+    "Username": "standard_user",
+    "Password": "secret_sauce",
+    "ExpectedResult": "Success",
+    "Description": "Ca thuong: Dang nhap thanh cong"
+  },
+  {
+    "TestCaseName": "Boundary_MinLengthUser",
+    "Username": "a", 
+    "Password": "secret_sauce",
+    "ExpectedResult": "Fail",
+    "Description": "Ca bien: Username ngan nhat (1 ky tu)"
+  },
+  {
+    "TestCaseName": "Boundary_MaxLengthUser",
+    "Username": "this_is_a_very_long_username_that_exceeds_normal_limits_1234567890",
+    "Password": "secret_sauce",
+    "ExpectedResult": "Fail",
+    "Description": "Ca bien: Username dai qua muc"
+  },
+  {
+    "TestCaseName": "Error_WrongPassword",
+    "Username": "standard_user",
+    "Password": "wrong_password",
+    "ExpectedResult": "Fail",
+    "Description": "Ca loi: Sai mat khau"
+  },
+  {
+    "TestCaseName": "Error_EmptyUsername",
+    "Username": "",
+    "Password": "secret_sauce",
+    "ExpectedResult": "Fail",
+    "Description": "Ca loi: Bo trong Username"
+  },
+  {
+    "TestCaseName": "Error_LockedOutUser",
+    "Username": "locked_out_user",
+    "Password": "secret_sauce",
+    "ExpectedResult": "Fail",
+    "Description": "Ca loi: Tai khoan bi khoa"
+  }
+]
