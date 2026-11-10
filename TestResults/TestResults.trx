@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="bcfb3339-a530-49bc-aa1d-5db8ffbee7b4" name="DELL@VUTRANGIABAO 2026-11-10 19:57:37" runUser="VUTRANGIABAO\DELL" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-11-10T19:57:37.6246617+07:00" queuing="2026-11-10T19:57:37.6246621+07:00" start="2026-11-10T19:57:33.3897727+07:00" finish="2026-11-10T19:58:01.7417086+07:00" />
+  <TestSettings name="default" id="98f11de2-5adb-476f-aa90-5f63a4b42fe6">
+    <Deployment runDeploymentRoot="DELL_VUTRANGIABAO_2026-11-10_19_57_37" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="68fd1dd0-0cc0-4552-8fb8-2ac75670a9cd" testId="f679998a-d4be-9ece-30ec-f5c3c4538fd1" testName="TestPageTitle" computerName="VUTRANGIABAO" duration="00:00:03.3873380" startTime="2026-11-10T19:57:33.8937546+07:00" endTime="2026-11-10T19:57:37.2809890+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="68fd1dd0-0cc0-4552-8fb8-2ac75670a9cd">
+      <Output>
+        <StdOut>Page Title is: Example Domain</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="53298282-ba50-491a-a53e-9a9149ec2adf" testId="15300ab9-de0d-49cf-5fa6-2a81a6d5aec6" testName="Login_InvalidCredentials_ShouldShowErrorMessage" computerName="VUTRANGIABAO" duration="00:00:03.7044610" startTime="2026-11-10T19:57:33.8937634+07:00" endTime="2026-11-10T19:57:37.5982236+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="53298282-ba50-491a-a53e-9a9149ec2adf" />
+    <UnitTestResult executionId="1888da58-347f-4d22-8a07-1884a7d1c0e1" testId="049200f4-8bcc-61eb-dcca-3ba58a067e98" testName="Test_JS_Confirm_Dismiss" computerName="VUTRANGIABAO" duration="00:00:06.1882210" startTime="2026-11-10T19:57:50.4257291+07:00" endTime="2026-11-10T19:57:56.6139488+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1888da58-347f-4d22-8a07-1884a7d1c0e1" />
+    <UnitTestResult executionId="0d931cdd-eabf-4a61-bf37-0f9029704cfa" testId="d637bc29-29b0-7ed6-86e9-d07a51e76bb9" testName="Login_ValidCredentials_ShouldRedirectToInventory" computerName="VUTRANGIABAO" duration="00:00:03.7408770" startTime="2026-11-10T19:57:37.5982987+07:00" endTime="2026-11-10T19:57:41.3391744+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0d931cdd-eabf-4a61-bf37-0f9029704cfa" />
+    <UnitTestResult executionId="14051bb8-4b78-4c51-b77e-3e30c024bf4f" testId="0ae6798d-ed79-c5b4-3b9f-35a7c1ce7bd2" testName="Test_JS_Prompt_SendKeys" computerName="VUTRANGIABAO" duration="00:00:05.0747920" startTime="2026-11-10T19:57:56.6139888+07:00" endTime="2026-11-10T19:58:01.6887803+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="14051bb8-4b78-4c51-b77e-3e30c024bf4f" />
+    <UnitTestResult executionId="55702d77-c123-482b-9b6f-d23f848be911" testId="2fd9b749-f838-035d-9766-556aecbc2923" testName="Test_GetProducts_And_Assert" computerName="VUTRANGIABAO" duration="00:00:03.0055270" startTime="2026-11-10T19:57:41.3392173+07:00" endTime="2026-11-10T19:57:44.3447433+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="55702d77-c123-482b-9b6f-d23f848be911" />
+    <UnitTestResult executionId="9f6b8033-60b0-42f6-b9b2-b64029d3fd9f" testId="15c39f49-f7bd-1e16-bbd3-9fb779774ba7" testName="Test_IntentionalFail_ToCaptureScreenshot" computerName="VUTRANGIABAO" duration="00:00:02.8483570" startTime="2026-11-10T19:57:44.3447773+07:00" endTime="2026-11-10T19:57:47.1931327+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9f6b8033-60b0-42f6-b9b2-b64029d3fd9f">
+      <Output>
+        <ErrorInfo>
+          <Message>  Cố tình làm sai để sinh ảnh minh chứng Phần D!&#xD;
+Assert.That(driver.Title, Is.EqualTo("Sai Tieu De Co Tinh"))&#xD;
+  Expected string length 19 but was 9. Strings differ at index 1.&#xD;
+  Expected: "Sai Tieu De Co Tinh"&#xD;
+  But was:  "Swag Labs"&#xD;
+  ------------^&#xD;
+</Message>
+          <StackTrace>   at FirstTests.LoginTests.Test_IntentionalFail_ToCaptureScreenshot() in C:\Users\DELL\Downloads\Lab1_Phần B\SeleniumTest\LoginTests.cs:line 91&#xD;
+
+1)    at FirstTests.LoginTests.Test_IntentionalFail_ToCaptureScreenshot() in C:\Users\DELL\Downloads\Lab1_Phần B\SeleniumTest\LoginTests.cs:line 91&#xD;
+
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+      <ResultFiles>
+        <ResultFile path="VUTRANGIABAO\Test_IntentionalFail_ToCaptureScreenshot_20261110_195747.png" />
+      </ResultFiles>
+    </UnitTestResult>
+    <UnitTestResult executionId="ee6e04b2-939b-4a7b-916d-cac9cf325cf6" testId="54ebbcf5-9ae8-ae5f-e607-53123ea4edad" testName="Test_JS_Alert_Accept" computerName="VUTRANGIABAO" duration="00:00:05.0575089" startTime="2026-11-10T19:57:45.3681624+07:00" endTime="2026-11-10T19:57:50.4256703+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ee6e04b2-939b-4a7b-916d-cac9cf325cf6" />
+    <UnitTestResult executionId="27bb4451-4e4b-4cba-864f-73e45452bc69" testId="fff6e0a1-047f-59bf-3e41-925f8d6af713" testName="Test_Iframe_TypeText" computerName="VUTRANGIABAO" duration="00:00:11.4744050" startTime="2026-11-10T19:57:33.8937088+07:00" endTime="2026-11-10T19:57:45.3681125+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="27bb4451-4e4b-4cba-864f-73e45452bc69" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Test_Iframe_TypeText" storage="c:\users\dell\downloads\lab1_phần b\seleniumtest\bin\debug\net10.0\seleniumtest.dll" id="fff6e0a1-047f-59bf-3e41-925f8d6af713">
+      <Execution id="27bb4451-4e4b-4cba-864f-73e45452bc69" />
+      <TestMethod codeBase="C:\Users\DELL\Downloads\Lab1_Phần B\SeleniumTest\bin\Debug\net10.0\SeleniumTest.dll" adapterTypeName="executor://nunit3testexecutor/" className="SeleniumTest.AdvancedInteractionTests" name="Test_Iframe_TypeText" />
+    </UnitTest>
+    <UnitTest name="Login_ValidCredentials_ShouldRedirectToInventory" storage="c:\users\dell\downloads\lab1_phần b\seleniumtest\bin\debug\net10.0\seleniumtest.dll" id="d637bc29-29b0-7ed6-86e9-d07a51e76bb9">
+      <Execution id="0d931cdd-eabf-4a61-bf37-0f9029704cfa" />
+      <TestMethod codeBase="C:\Users\DELL\Downloads\Lab1_Phần B\SeleniumTest\bin\Debug\net10.0\SeleniumTest.dll" adapterTypeName="executor://nunit3testexecutor/" className="FirstTests.LoginTests" name="Login_ValidCredentials_ShouldRedirectToInventory" />
+    </UnitTest>
+    <UnitTest name="TestPageTitle" storage="c:\users\dell\downloads\lab1_phần b\seleniumtest\bin\debug\net10.0\seleniumtest.dll" id="f679998a-d4be-9ece-30ec-f5c3c4538fd1">
+      <Execution id="68fd1dd0-0cc0-4552-8fb8-2ac75670a9cd" />
+      <TestMethod codeBase="C:\Users\DELL\Downloads\Lab1_Phần B\SeleniumTest\bin\Debug\net10.0\SeleniumTest.dll" adapterTypeName="executor://nunit3testexecutor/" className="SeleniumTest.Tests" name="TestPageTitle" />
+    </UnitTest>
+    <UnitTest name="Test_IntentionalFail_ToCaptureScreenshot" storage="c:\users\dell\downloads\lab1_phần b\seleniumtest\bin\debug\net10.0\seleniumtest.dll" id="15c39f49-f7bd-1e16-bbd3-9fb779774ba7">
+      <Execution id="9f6b8033-60b0-42f6-b9b2-b64029d3fd9f" />
+      <TestMethod codeBase="C:\Users\DELL\Downloads\Lab1_Phần B\SeleniumTest\bin\Debug\net10.0\SeleniumTest.dll" adapterTypeName="executor://nunit3testexecutor/" className="FirstTests.LoginTests" name="Test_IntentionalFail_ToCaptureScreenshot" />
+    </UnitTest>
+    <UnitTest name="Test_JS_Prompt_SendKeys" storage="c:\users\dell\downloads\lab1_phần b\seleniumtest\bin\debug\net10.0\seleniumtest.dll" id="0ae6798d-ed79-c5b4-3b9f-35a7c1ce7bd2">
+      <Execution id="14051bb8-4b78-4c51-b77e-3e30c024bf4f" />
+      <TestMethod codeBase="C:\Users\DELL\Downloads\Lab1_Phần B\SeleniumTest\bin\Debug\net10.0\SeleniumTest.dll" adapterTypeName="executor://nunit3testexecutor/" className="SeleniumTest.AdvancedInteractionTests" name="Test_JS_Prompt_SendKeys" />
+    </UnitTest>
+    <UnitTest name="Test_JS_Confirm_Dismiss" storage="c:\users\dell\downloads\lab1_phần b\seleniumtest\bin\debug\net10.0\seleniumtest.dll" id="049200f4-8bcc-61eb-dcca-3ba58a067e98">
+      <Execution id="1888da58-347f-4d22-8a07-1884a7d1c0e1" />
+      <TestMethod codeBase="C:\Users\DELL\Downloads\Lab1_Phần B\SeleniumTest\bin\Debug\net10.0\SeleniumTest.dll" adapterTypeName="executor://nunit3testexecutor/" className="SeleniumTest.AdvancedInteractionTests" name="Test_JS_Confirm_Dismiss" />
+    </UnitTest>
+    <UnitTest name="Test_JS_Alert_Accept" storage="c:\users\dell\downloads\lab1_phần b\seleniumtest\bin\debug\net10.0\seleniumtest.dll" id="54ebbcf5-9ae8-ae5f-e607-53123ea4edad">
+      <Execution id="ee6e04b2-939b-4a7b-916d-cac9cf325cf6" />
+      <TestMethod codeBase="C:\Users\DELL\Downloads\Lab1_Phần B\SeleniumTest\bin\Debug\net10.0\SeleniumTest.dll" adapterTypeName="executor://nunit3testexecutor/" className="SeleniumTest.AdvancedInteractionTests" name="Test_JS_Alert_Accept" />
+    </UnitTest>
+    <UnitTest name="Login_InvalidCredentials_ShouldShowErrorMessage" storage="c:\users\dell\downloads\lab1_phần b\seleniumtest\bin\debug\net10.0\seleniumtest.dll" id="15300ab9-de0d-49cf-5fa6-2a81a6d5aec6">
+      <Execution id="53298282-ba50-491a-a53e-9a9149ec2adf" />
+      <TestMethod codeBase="C:\Users\DELL\Downloads\Lab1_Phần B\SeleniumTest\bin\Debug\net10.0\SeleniumTest.dll" adapterTypeName="executor://nunit3testexecutor/" className="FirstTests.LoginTests" name="Login_InvalidCredentials_ShouldShowErrorMessage" />
+    </UnitTest>
+    <UnitTest name="Test_GetProducts_And_Assert" storage="c:\users\dell\downloads\lab1_phần b\seleniumtest\bin\debug\net10.0\seleniumtest.dll" id="2fd9b749-f838-035d-9766-556aecbc2923">
+      <Execution id="55702d77-c123-482b-9b6f-d23f848be911" />
+      <TestMethod codeBase="C:\Users\DELL\Downloads\Lab1_Phần B\SeleniumTest\bin\Debug\net10.0\SeleniumTest.dll" adapterTypeName="executor://nunit3testexecutor/" className="FirstTests.LoginTests" name="Test_GetProducts_And_Assert" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="f679998a-d4be-9ece-30ec-f5c3c4538fd1" executionId="68fd1dd0-0cc0-4552-8fb8-2ac75670a9cd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="15300ab9-de0d-49cf-5fa6-2a81a6d5aec6" executionId="53298282-ba50-491a-a53e-9a9149ec2adf" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="049200f4-8bcc-61eb-dcca-3ba58a067e98" executionId="1888da58-347f-4d22-8a07-1884a7d1c0e1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d637bc29-29b0-7ed6-86e9-d07a51e76bb9" executionId="0d931cdd-eabf-4a61-bf37-0f9029704cfa" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0ae6798d-ed79-c5b4-3b9f-35a7c1ce7bd2" executionId="14051bb8-4b78-4c51-b77e-3e30c024bf4f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2fd9b749-f838-035d-9766-556aecbc2923" executionId="55702d77-c123-482b-9b6f-d23f848be911" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="15c39f49-f7bd-1e16-bbd3-9fb779774ba7" executionId="9f6b8033-60b0-42f6-b9b2-b64029d3fd9f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="54ebbcf5-9ae8-ae5f-e607-53123ea4edad" executionId="ee6e04b2-939b-4a7b-916d-cac9cf325cf6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fff6e0a1-047f-59bf-3e41-925f8d6af713" executionId="27bb4451-4e4b-4cba-864f-73e45452bc69" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="9" executed="9" passed="8" failed="1" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>NUnit Adapter 1.0.0.0: Test execution started&#xD;
+Running all tests in C:\Users\DELL\Downloads\Lab1_Phần B\SeleniumTest\bin\Debug\net10.0\SeleniumTest.dll&#xD;
+   NUnit3TestExecutor discovered 9 of 9 NUnit test cases using Current Discovery mode, Non-Explicit run&#xD;
+[START] Bat dau test: Test_Iframe_TypeText luc 19:57:33&#xD;
+[START] Bat dau test: Login_InvalidCredentials_ShouldShowErrorMessage luc 19:57:33&#xD;
+Page Title is: Example Domain&#xD;
+&#xD;
+[STEP] Dang nhap voi tai khoan: locked_out_user&#xD;
+[END] Ket thuc test: Login_InvalidCredentials_ShouldShowErrorMessage -&gt; Trang thai: Passed&#xD;
+[START] Bat dau test: Login_ValidCredentials_ShouldRedirectToInventory luc 19:57:37&#xD;
+[STEP] Dang nhap voi tai khoan: standard_user&#xD;
+[END] Ket thuc test: Login_ValidCredentials_ShouldRedirectToInventory -&gt; Trang thai: Passed&#xD;
+[START] Bat dau test: Test_GetProducts_And_Assert luc 19:57:41&#xD;
+[STEP] Dang nhap voi tai khoan: standard_user&#xD;
+[INFO] Tim thay 6 san pham tren trang.&#xD;
+Tên SP: Sauce Labs Backpack | Giá: $29.99&#xD;
+Tên SP: Sauce Labs Bike Light | Giá: $9.99&#xD;
+Tên SP: Sauce Labs Bolt T-Shirt | Giá: $15.99&#xD;
+Tên SP: Sauce Labs Fleece Jacket | Giá: $49.99&#xD;
+Tên SP: Sauce Labs Onesie | Giá: $7.99&#xD;
+Tên SP: Test.allTheThings() T-Shirt (Red) | Giá: $15.99&#xD;
+[END] Ket thuc test: Test_GetProducts_And_Assert -&gt; Trang thai: Passed&#xD;
+[START] Bat dau test: Test_IntentionalFail_ToCaptureScreenshot luc 19:57:44&#xD;
+[END] Ket thuc test: Test_Iframe_TypeText -&gt; Trang thai: Passed&#xD;
+[START] Bat dau test: Test_JS_Alert_Accept luc 19:57:45&#xD;
+[STEP] Dang nhap voi tai khoan: standard_user&#xD;
+[END] Ket thuc test: Test_IntentionalFail_ToCaptureScreenshot -&gt; Trang thai: Failed&#xD;
+[SCREENSHOT] Da chup anh man hinh loi: C:\Users\DELL\Downloads\Lab1_Phần B\SeleniumTest\bin\Debug\net10.0\screenshots\Test_IntentionalFail_ToCaptureScreenshot_20261110_195747.png&#xD;
+[END] Ket thuc test: Test_JS_Alert_Accept -&gt; Trang thai: Passed&#xD;
+[START] Bat dau test: Test_JS_Confirm_Dismiss luc 19:57:50&#xD;
+[END] Ket thuc test: Test_JS_Confirm_Dismiss -&gt; Trang thai: Passed&#xD;
+[START] Bat dau test: Test_JS_Prompt_SendKeys luc 19:57:56&#xD;
+[END] Ket thuc test: Test_JS_Prompt_SendKeys -&gt; Trang thai: Passed&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>
