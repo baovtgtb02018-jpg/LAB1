@@ -1,0 +1,41 @@
+name: Selenium .NET CI
+
+on:
+  push:
+    branches: [ "main", "feature/**" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 1. Checkout code tu repository
+      uses: actions/checkout@v4
+
+    - name: 2. Cai dat .NET SDK
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x'
+
+    - name: 3. Cai dat Google Chrome tren may ao
+      uses: browser-actions/setup-chrome@v1
+
+    - name: 4. Restore cac thu vien NuGet
+      run: dotnet restore
+
+    - name: 5. Build du an
+      run: dotnet build --no-restore
+
+    - name: 6. Chay Selenium Test (Headless) va xuat bao cao TRX
+      run: dotnet test --no-build --verbosity normal --logger "trx;LogFileName=TestResults.trx"
+
+    - name: 7. Upload bao cao TRX va anh chup khi loi (Artifacts)
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-results-and-screenshots
+        path: |
+          **/TestResults/*.trx
+          **/screenshots/*.png

@@ -173,3 +173,87 @@ namespace SauceDemoTests
     }
 }
 // Cap nhat ghi chu hoan chinh sau khi giai quyet conflict
+
+### TC01 – Đăng nhập thành công
+
+| Trường               | Nội dung                                                                              |
+| :------------------- | :------------------------------------------------------------------------------------ |
+| Test ID              | TC_LOGIN_01                                                                           |
+| Tiêu đề              | Đăng nhập thành công với tài khoản hợp lệ                                             |
+| Điều kiện tiên quyết | Mở trang https://www.saucedemo.com/                                                   |
+| Các bước thực hiện   | 1. Nhập standard_user vào Username. 2. Nhập secret_sauce vào Password. 3. Nhấn Login. |
+| Dữ liệu kiểm thử     | Username: standard_user / Password: secret_sauce                                      |
+| Kết quả mong đợi     | 1. Chuyển sang /inventory.html. 2. Hiển thị tiêu đề Products. 3. Không có lỗi.        |
+| Độ ưu tiên           | High (Smoke)                                                                          |
+
+### TC02 – Sai mật khẩu
+
+| Trường               | Nội dung                                                                                |
+| :------------------- | :-------------------------------------------------------------------------------------- |
+| Test ID              | TC_LOGIN_02                                                                             |
+| Tiêu đề              | Hiển thị lỗi khi nhập sai mật khẩu                                                      |
+| Điều kiện tiên quyết | Mở trang https://www.saucedemo.com/                                                     |
+| Các bước thực hiện   | 1. Nhập standard_user vào Username. 2. Nhập wrong_password vào Password. 3. Nhấn Login. |
+| Dữ liệu kiểm thử     | Username: standard_user / Password: wrong_password                                      |
+| Kết quả mong đợi     | 1. Không đăng nhập được. 2. Lỗi: "Epic sadface: Username and password do not match any user in this service". 3. Nút X đóng được thông báo.                                                                          |
+| Độ ưu tiên           | High                                                                                    |
+
+### TC03 – Bỏ trống Username
+
+| Trường               | Nội dung                                                                |
+| :------------------- | :---------------------------------------------------------------------- |
+| Test ID              | TC_LOGIN_03                                                             |
+| Tiêu đề              | Hiển thị lỗi khi không nhập Username                                    |
+| Điều kiện tiên quyết | Mở trang https://www.saucedemo.com/                                     |
+| Các bước thực hiện   | 1. Để trống Username. 2. Nhập secret_sauce vào Password. 3. Nhấn Login. |
+| Dữ liệu kiểm thử     | Username: (trống) / Password: secret_sauce                              |
+| Kết quả mong đợi     | 1. Không đăng nhập được. 2. Lỗi: "Epic sadface: Username is required". 3. Trường Username được đánh  dấu lỗi.                                                                                         |
+| Độ ưu tiên           | Medium                                                                  |
+
+### TC04 – Tài khoản bị khóa
+
+| Trường               | Nội dung                                                                                |
+| :------------------- | :-------------------------------------------------------------------------------------- |
+| Test ID              | TC_LOGIN_04                                                                             |
+| Tiêu đề              | Ngăn chặn đăng nhập của tài khoản bị khóa                                               |
+| Điều kiện tiên quyết | Mở trang https://www.saucedemo.com/                                                     |
+| Các bước thực hiện   | 1. Nhập locked_out_user vào Username. 2. Nhập secret_sauce vào Password. 3. Nhấn Login. |
+| Dữ liệu kiểm thử     | Username: locked_out_user / Password: secret_sauce                                      |
+| Kết quả mong đợi     | 1. Từ chối đăng nhập. 2. Lỗi: "Epic sadface: Sorry, this user has been locked out.". 3. Không truy cập được trang sản phẩm.   |
+| Độ ưu tiên           | High (Security)                                                                         |
+
+### TC05 – Bỏ trống cả hai trường
+
+| Trường               | Nội dung                                                                                             |
+| :------------------- | :--------------------------------------------------------------------------------------------------- |
+| Test ID              | TC_LOGIN_05                                                                                          |
+| Tiêu đề              | Hiển thị lỗi khi không nhập bất kỳ thông tin nào                                                     |
+| Điều kiện tiên quyết | Mở trang https://www.saucedemo.com/                                                                  |
+| Các bước thực hiện   | 1. Để trống cả Username và Password. 2. Nhấn Login.                                                  |
+| Dữ liệu kiểm thử     | Username: (trống) / Password: (trống)                                                                |
+| Kết quả mong đợi     | 1. Không gửi form. 2. Lỗi: "Epic sadface: Username is required". 3. Trang giữ nguyên trạng thái lỗi. |
+| Độ ưu tiên           | Medium                                                                                               |
+
+#  Framework Kiểm Thử Tự Động - SauceDemo (FPT Polytechnic)
+
+[![CI Tests](https://github.com/baovqgtb02018-jpg/LAB1/actions/workflows/tests.yml/badge.svg)](https://github.com/baovqgtb02018-jpg/LAB1/actions)
+
+Dự án kiểm thử tự động UI với Selenium WebDriver, viết bằng C# .NET và NUnit. 
+Đây là bài tập lớn (Assignment) môn Kiểm thử nâng cao cùng AI - Yêu cầu áp dụng Page Object Model (POM), Data-Driven Testing (JSON) và tích hợp CI/CD qua GitHub Actions.
+
+##  Công nghệ & Thư viện sử dụng
+- **Ngôn ngữ:** C# (.NET 8.0)
+- **Framework Test:** NUnit & NUnit3TestAdapter
+- **Công cụ UI:** Selenium WebDriver
+- **Thiết kế & Data:** Page Object Model (POM), `appsettings.json`, Data-driven bằng file JSON.
+- **CI/CD:** GitHub Actions (Chạy ngầm Chrome Headless trên máy ảo Ubuntu).
+
+##  Cấu trúc dự án
+```text
+📦 ASM
+ ┣ 📂 Config        # Chứa class cấu hình (đọc từ appsettings)
+ ┣ 📂 Pages         # File BasePage xử lý WebDriverWait và các POM (LoginPage, InventoryPage...)
+ ┣ 📂 Tests         # Class BaseTest quản lý Driver và kịch bản Test
+ ┣ 📂 TestData      # Dữ liệu Data-Driven (login_data.json chứa 6 ca test biên/lỗi/thường)
+ ┣ 📜 appsettings.json # Cấu hình môi trường (URL, Browser, Timeout, Headless)
+ ┗ 📜 README.md
