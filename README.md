@@ -257,3 +257,98 @@ Dự án kiểm thử tự động UI với Selenium WebDriver, viết bằng C#
  ┣ 📂 TestData      # Dữ liệu Data-Driven (login_data.json chứa 6 ca test biên/lỗi/thường)
  ┣ 📜 appsettings.json # Cấu hình môi trường (URL, Browser, Timeout, Headless)
  ┗ 📜 README.md
+
+ # Phần E: Thẩm định kết quả AI khi refactor sang Page Object Model
+
+## 1. Công cụ AI sử dụng
+
+- Công cụ: ChatGPT  <!-- ghi rõ phiên bản nếu biết, ví dụ GPT-5 -->
+- Ngày sử dụng: ../../2026  <!-- ĐIỀN -->
+- Đối tượng refactor: `LoginTests.cs` (NUnit + Selenium, trang https://www.saucedemo.com/)
+
+## 2. Prompt đã gửi
+
+```text
+<!-- DÁN NGUYÊN VĂN prompt bạn đã gửi cho ChatGPT, không sửa -->
+```
+
+## 3. Kết quả AI trả về
+
+AI trả về file `POM_Refactor.zip` gồm 4 file:
+
+| File | Nội dung |
+|---|---|
+| `Pages/BasePage.cs` | Lớp trừu tượng giữ `driver`, `wait` và hàm `Tim(By)` có chờ |
+| `Pages/LoginPage.cs` | `DangNhap(tk, mk)` trả về `InventoryPage`, `LayThongBaoLoi()` |
+| `Pages/InventoryPage.cs` | `DaHienThi()`, `SapXep()`, `LayDanhSachGia()`, `LayDanhSachTenSanPham()`, `LaySoLuongSanPham()`, `LayTieuDeTrang()` |
+| `LoginTests.cs` | File test sau refactor, gọi qua Page Object |
+
+## 4. Thẩm định
+
+### 4.1. Các tiêu chí đã kiểm
+
+| Tiêu chí | Cách kiểm | Kết quả |
+|---|---|---|
+| File test không còn chữ `By` | Tìm `By` trong `LoginTests.cs` | Đạt |
+| Không có `Assert` trong Page | Tìm `Assert` trong thư mục `Pages` | Đạt |
+| Không Page nào trả về `IWebElement` | Tìm `IWebElement` trong `Pages` | Đạt |
+| Locator là `private readonly` | Đọc từng dòng khai báo `By` | Đạt |
+| Page kế thừa `BasePage`, không khai báo lại driver/wait | Đọc đầu mỗi class | Đạt |
+| Tên hành vi theo việc người dùng làm | Đọc tên hàm public | Đạt |
+| Chuyển trang trả `new TrangMoi(driver)`, ở lại trang trả `this` | Đọc từng hàm | Đạt |
+| Mọi thao tác tìm phần tử đi qua `Tim()` | Tìm `driver.Find` trong `Pages` | **Không đạt** (xem lỗi 2) |
+| Giữ nguyên hành vi của test | So Assert trước và sau | **Không đạt** (xem lỗi 1) |
+| `dotnet build` / `dotnet test` cho kết quả giống trước | Chạy thật, so ảnh | <!-- ĐIỀN sau khi chạy --> |
+
+### 4.2. Các chỗ AI làm sai hoặc chưa đúng quy ước
+
+**Lỗi 1: Đổi hành vi của Assert trong `Login_InvalidCredentials_ShouldShowErrorMessage`.**
+- Code gốc: `Assert.That(errorMessage.Displayed, Is.True, ...)` kiểm thông báo lỗi có hiển thị.
+- AI viết lại: `Assert.That(string.IsNullOrEmpty(errorMessage), Is.False, ...)`, chỉ kiểm có chữ hay không.
+- Vì sao sai: refactor phải giữ nguyên hành vi. Assert mới yếu hơn Assert cũ. Lỗi này nhẹ vì `Tim()` có chờ phần tử hiển thị, nhưng ý nghĩa Assert đã khác.
+
+**Lỗi 2: `InventoryPage` bỏ qua `Tim()`, gọi thẳng `driver.FindElements`, `driver.Url`, `driver.Title`.**
+- Vị trí: `InventoryPage.cs` các dòng 22, 36, 45, 53, 58.
+- Vì sao sai: quy ước là mọi thao tác tìm phần tử phải đi qua hàm có chờ trong `BasePage`. `BasePage` chỉ có `Tim()` cho một phần tử, không có hàm tìm nhiều phần tử, nên AI lách qua `driver`.
+
+**Lỗi 3: Locator `khuVucSanPham` được khai báo nhưng không dùng.**
+- Là code thừa, gây rối khi bảo trì.
+
+**Lỗi 4: Hàm `DaHienThi()` đặt tên gây hiểu nhầm.**
+- Hàm chỉ kiểm URL có chứa `inventory.html`, không kiểm trang đã hiển thị nội dung gì.
+
+**Lỗi 5: `LayTieuDeTrang()` đặt sai vị trí.**
+- Tiêu đề trang là thuộc tính chung của mọi trang, nên đặt trong `BasePage`.
+
+**Lỗi 6: Tách tên và giá thành hai danh sách riêng rồi ghép bằng chỉ số `names[i]`, `prices[i]`.**
+- Code gốc đọc từng sản phẩm một. Cách mới có nguy cơ lệch hoặc lỗi chỉ số nếu hai danh sách có độ dài khác nhau.
+
+**Lỗi 7: Không xử lý việc trộn `ImplicitWait` 5 giây (trong `Setup`) với `WebDriverWait` 10 giây (trong `BasePage`).**
+- Trộn hai kiểu chờ có thể làm thời gian chờ lâu và khó đoán. AI không cảnh báo điều này.
+
+### 4.3. Điểm AI làm tốt
+
+- Sửa được lỗi `driver` / `_driver` không thống nhất của file gốc.
+- Thêm `using System.Text.Json;`.
+- Thêm điều kiện `_driver != null` trước khi chụp ảnh trong `TearDown`.
+
+### 4.4. Cách tôi sửa
+
+<!-- CHỈ GHI NHỮNG GÌ BẠN THỰC SỰ ĐÃ SỬA. Gợi ý: -->
+- Lỗi 1: trả lại Assert kiểm hiển thị, bổ sung hàm `ThongBaoLoiDaHienThi()` trong `LoginPage` trả về `bool`, Assert nằm trong file test.
+- Lỗi 2: thêm hàm tìm nhiều phần tử có chờ (`TimNhieu(By)`) vào `BasePage`, `InventoryPage` dùng hàm này.
+- Lỗi 3: xóa locator `khuVucSanPham`.
+
+## 5. Kết quả chạy test
+
+| | Trước refactor | Sau refactor |
+|---|---|---|
+| Số test | 4 | 4 |
+| Xanh | 3 | <!-- ĐIỀN --> |
+| Đỏ | 1 (`Test_IntentionalFail_ToCaptureScreenshot`, cố tình fail) | <!-- ĐIỀN --> |
+
+Ảnh minh chứng: `docs/truoc-refactor.png`, `docs/sau-refactor.png`  <!-- ĐỔI theo tên file thật -->
+
+## 6. Kết luận
+
+AI chuyển được phần lớn sang Page Object Model đúng quy ước (đóng gói locator, không Assert trong Page, không trả `IWebElement`), nhưng vẫn mắc lỗi thay đổi hành vi Assert và bỏ qua hàm chờ dùng chung. Vì vậy kết quả của AI cần được đọc và chạy thử thật trước khi dùng.
