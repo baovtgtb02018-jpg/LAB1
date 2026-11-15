@@ -1,23 +1,34 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
+using System.Collections.Generic;
 
-namespace AutomationTests.Pages
+namespace SeleniumTest
 {
-    public class BasePage
+    public abstract class BasePage
     {
         protected IWebDriver driver;
         protected WebDriverWait wait;
 
-        public BasePage(IWebDriver driver)
+        protected BasePage(IWebDriver driver)
         {
             this.driver = driver;
-            this.wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10)); // YC3
+            this.wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
         }
 
-        public IWebElement WaitForElement(By locator)
+        protected IWebElement Tim(By locator)
         {
-            return wait.Until(d => d.FindElement(locator)); // YC3
+            return wait.Until(d =>
+            {
+                var element = d.FindElement(locator);
+                return (element != null && element.Displayed) ? element : null;
+            });
+        }
+
+        protected IReadOnlyCollection<IWebElement> TimNhieu(By locator)
+        {
+            wait.Until(d => d.FindElements(locator).Count > 0);
+            return driver.FindElements(locator);
         }
     }
 }
