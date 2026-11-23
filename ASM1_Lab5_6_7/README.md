@@ -71,3 +71,20 @@ dotnet restore
 dotnet build
 dotnet test -l "console;verbosity=detailed" --logger "trx;LogFileName=TestResults.trx"
 ```
+
+
+---
+
+## 📦 Các phần bổ sung từ thành viên nhóm (`Lab 5_Phan C`, `Lab 6_Phan E`, `Lab 7_Phan B`)
+
+### Lab 5 — Phần C: `Lab 5_Phan C/` (`BaseTest` & `ScreenshotHelper`)
+- Thư mục `Lab 5_Phan C/` lưu trữ nguyên vẹn bài cài đặt `SeleniumFramework.Core.BaseTest` (abstract, bọc `try/finally` cho chụp ảnh và `Quit()`/`Dispose()`) và `SeleniumFramework.Utilities.ScreenshotHelper`, kèm ảnh minh chứng `Screenshots_Lab5/Ảnh Lab 5 pass.jpg`, `Screenshots_Lab5/Ảnh Lab 5.1.jpg`.
+- `AutomationTests.csproj` đã cấu hình `<Compile Remove="Lab 5_Phan C\**" />` để giữ nguyên thư mục mà không gây trùng biên dịch khi build/test project chính.
+
+### Lab 6 — Phần E: `Lab 6_Phan E/README.md` (AI sinh Test Case & Thẩm định)
+- Lưu đầy đủ prompt & 5 ca kiểm thử AI sinh cho ô nhập `Postal Code` trên `saucedemo.com` kèm câu `Assert.That` NUnit C# và phân tích 2 ca không dùng được (**Ca 3** kiểm tra định dạng chữ cái mà `saucedemo.com` không có validation; **Ca 5** bịa quy tắc `maxlength <= 10`).
+- Ảnh minh chứng: `Screenshots_Lab6/Ảnh Lab 6.jpg`.
+
+### Lab 7 — Phần B: `Lab 7_Phan B/README.md` (Chọn lọc & Thẩm định Test Case)
+- Bảng phân loại **GIỮ / BỎ / SỬA** cho 6 test case tính năng giỏ hàng trên `saucedemo.com` và giải thích lý do loại/sửa **TC4** (nút Add to cart đổi sang Remove sau lần click đầu), **TC5** (saucedemo không có trạng thái Out of stock), **TC6** (tối đa chỉ có 6 sản phẩm, không thể thêm 99 sản phẩm).
+- Ảnh minh chứng: `Screenshots_Lab7/Ảnh Lab 7.jpg`.
