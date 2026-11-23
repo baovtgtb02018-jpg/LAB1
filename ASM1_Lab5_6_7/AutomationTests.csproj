@@ -38,6 +38,9 @@
     <Compile Remove="Lab 5_Phan C\**" />
     <EmbeddedResource Remove="Lab 5_Phan C\**" />
     <None Remove="Lab 5_Phan C\**" />
+    <Compile Remove="LAB5\**" />
+    <EmbeddedResource Remove="LAB5\**" />
+    <None Remove="LAB5\**" />
   </ItemGroup>
 
 </Project>

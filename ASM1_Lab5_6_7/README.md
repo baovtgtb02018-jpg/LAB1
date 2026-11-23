@@ -88,3 +88,6 @@ dotnet test -l "console;verbosity=detailed" --logger "trx;LogFileName=TestResult
 ### Lab 7 — Phần B: `Lab 7_Phan B/README.md` (Chọn lọc & Thẩm định Test Case)
 - Bảng phân loại **GIỮ / BỎ / SỬA** cho 6 test case tính năng giỏ hàng trên `saucedemo.com` và giải thích lý do loại/sửa **TC4** (nút Add to cart đổi sang Remove sau lần click đầu), **TC5** (saucedemo không có trạng thái Out of stock), **TC6** (tối đa chỉ có 6 sản phẩm, không thể thêm 99 sản phẩm).
 - Ảnh minh chứng: `Screenshots_Lab7/Ảnh Lab 7.jpg`.
+
+### Lab 5 — Bản bổ sung `LAB5/` (`LAB5.csproj`, `Config_lab5`, `Core_lab5`, `Data_lab5`, `Pages_lab5`, `Tests_lab5`, `Utilities_lab5`)
+- Lưu trữ nguyên vẹn bài `LAB5` của thành viên vào thư mục con `LAB5/`, được loại trừ khỏi compile glob của `AutomationTests.csproj` (`<Compile Remove="LAB5\**" />`) để không xung đột khi build/test project chính.
