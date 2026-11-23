@@ -41,6 +41,9 @@
     <Compile Remove="LAB5\**" />
     <EmbeddedResource Remove="LAB5\**" />
     <None Remove="LAB5\**" />
+    <Compile Remove="LAB6\**" />
+    <EmbeddedResource Remove="LAB6\**" />
+    <None Remove="LAB6\**" />
   </ItemGroup>
 
 </Project>

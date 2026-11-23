@@ -91,3 +91,7 @@ dotnet test -l "console;verbosity=detailed" --logger "trx;LogFileName=TestResult
 
 ### Lab 5 — Bản bổ sung `LAB5/` (`LAB5.csproj`, `Config_lab5`, `Core_lab5`, `Data_lab5`, `Pages_lab5`, `Tests_lab5`, `Utilities_lab5`)
 - Lưu trữ nguyên vẹn bài `LAB5` của thành viên vào thư mục con `LAB5/`, được loại trừ khỏi compile glob của `AutomationTests.csproj` (`<Compile Remove="LAB5\**" />`) để không xung đột khi build/test project chính.
+
+### Lab 6 — Phần A: `LAB6/Lab6SeleniumTests/` (Tổ chức `[Category]` & chạy chọn lọc `--filter`)
+- Lưu trữ nguyên vẹn bài `LAB6` của thành viên vào thư mục con `LAB6/Lab6SeleniumTests/` (`Lab6SeleniumTests.csproj`, `BaseTest_lab6.cs`, `LoginTests_lab6.cs`, `CartTests_lab6.cs` với các nhóm `[Category("Smoke")]`, `[Category("Login")]`, `[Category("Cart")]`, `[Category("Slow")]`) cùng 2 ảnh chạy `--filter "Category=Smoke"` và `--filter "Category!=Slow"` trong `Screenshots_Lab6/`.
+- Đã loại trừ `LAB6\**` khỏi compile glob của `AutomationTests.csproj` (`<Compile Remove="LAB6\**" />`) để không xung đột khi build/test project chính.
