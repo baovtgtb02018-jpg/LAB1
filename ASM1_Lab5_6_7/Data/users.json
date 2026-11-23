@@ -1,0 +1,38 @@
+[
+  {
+    "Username": "standard_user",
+    "Password": "secret_sauce",
+    "ThanhCong": true,
+    "GhiChu": "Ca thuong: Dang nhap thanh cong voi tai khoan chuan"
+  },
+  {
+    "Username": "locked_out_user",
+    "Password": "secret_sauce",
+    "ThanhCong": false,
+    "GhiChu": "Ca nghich: Tai khoan bi khoa"
+  },
+  {
+    "Username": "",
+    "Password": "secret_sauce",
+    "ThanhCong": false,
+    "GhiChu": "Ca bien: O Username bo trong"
+  },
+  {
+    "Username": " standard_user ",
+    "Password": "secret_sauce",
+    "ThanhCong": false,
+    "GhiChu": "Ca bien: Username co khoang trang thua"
+  },
+  {
+    "Username": "user!@#$%^&*()",
+    "Password": "secret_sauce",
+    "ThanhCong": false,
+    "GhiChu": "Ca bien: Username chua ky tu dac biet"
+  },
+  {
+    "Username": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "Password": "secret_sauce",
+    "ThanhCong": false,
+    "GhiChu": "Ca bien: Username chuoi rat dai (100 ky tu)"
+  }
+]

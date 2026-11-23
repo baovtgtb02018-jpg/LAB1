@@ -22,4 +22,10 @@
     <Using Include="NUnit.Framework" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="ASM1_Lab5_6_7\**" />
+    <EmbeddedResource Remove="ASM1_Lab5_6_7\**" />
+    <None Remove="ASM1_Lab5_6_7\**" />
+  </ItemGroup>
+
 </Project>
